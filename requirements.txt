@@ -1,0 +1,10 @@
+typer
+requests
+fastapi
+sqlmodel
+sqlalchemy
+psycopg2
+pydantic==1.10.9
+kafka-python
+uvicorn
+fastkafka

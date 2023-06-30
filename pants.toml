@@ -1,0 +1,20 @@
+[GLOBAL]
+pants_version = "2.16.0"
+
+backend_packages = [
+    "pants.backend.python",
+    "pants.backend.experimental.python.lint.ruff",
+    "pants.backend.python.typecheck.mypy",
+    "pants.backend.python.lint.yapf",
+    "pants.backend.docker",
+]
+
+[python]
+interpreter_constraints = ['>=3.9']
+
+[mypy]
+config = "configs/mypy.ini"
+
+[anonymous-telemetry]
+enabled = true
+repo_id = "d943749e-7fb0-4247-aa49-222a377fc62f"
