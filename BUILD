@@ -1,8 +1,8 @@
 python_requirements(
     name="root",
     overrides={
-            "sqlalchemy": {"dependencies": [":root#psycopg2"]},
-        },
+        "sqlalchemy": {"dependencies": [":root#psycopg2"]},
+    },
 )
 
 docker_image(
