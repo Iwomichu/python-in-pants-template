@@ -1,0 +1,56 @@
+version: "3.4"
+services:
+  spark-notebook:
+    image: jupyter/pyspark-notebook:python-3.8
+    ports:
+      - "8888:8888"
+      - "4040:4040"
+    volumes:
+      - ./notebooks:/home/jovyan/notebooks
+      - ./results:/home/jovyan/results
+  postgres:
+    image: postgres:11
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_USER=postgres
+      - POSTGRES_DB=postgres
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+  kafka:
+    image: docker.io/bitnami/kafka:3.4
+    ports:
+      - "9092:9092"
+    volumes:
+      - "kafka_data:/bitnami"
+    environment:
+      - ALLOW_PLAINTEXT_LISTENER=yes
+  backend:
+    image: example/backend
+    environment:
+      - KAFKA_HOSTNAME=kafka
+      - KAFKA_PORT=9092
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_HOST=postgres
+      - POSTGRES_DATABASE=postgres
+    restart: on-failure
+    ports:
+      - "8000:8000"
+    depends_on:
+      - kafka
+      - postgres
+    healthcheck:
+      start_period: 10s
+  monitor:
+    image: example/monitor
+    restart: on-failure
+    links:
+      - kafka
+    depends_on:
+      - backend
+volumes:
+  pgdata: {}
+  kafka_data:
+    driver: local
