@@ -52,7 +52,7 @@ jobs:
       run: |
         # We also smoke test that our release process will work by running `package`.
         pants package ::
-        pants run placeholder:app -- info
+        pants run apps/cli:app -- info
     - name: Upload pants log
       uses: actions/upload-artifact@v3
       with:
