@@ -13,8 +13,8 @@ https://www.pantsbuild.org/docs/python-goals
 * `test`: run tests with Pytest.
 * `check`: run MyPy.
 
-### Run Pex with argument
+### Run Pex-ed CLI with argument
 `pants run placeholder:app -- info`
 
-### Build and run FastAPI server in a container
-`pants run :server`
+### Build and run environment
+`./start-environment.sh`
