@@ -13,4 +13,3 @@ docker_image(
     source="monitor.Dockerfile",
     repository="example/monitor",
 )
-
