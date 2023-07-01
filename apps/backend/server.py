@@ -7,7 +7,7 @@ from fastapi import FastAPI, Depends, HTTPException, Query
 from kafka import KafkaProducer
 from sqlmodel import SQLModel, Session, select
 
-from placeholder import models
+from example import models
 
 POSTS_TOPIC = "posts"
 KAFKA_HOSTNAME = os.environ.get("KAFKA_HOSTNAME", "kafka")
