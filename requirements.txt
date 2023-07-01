@@ -1,10 +1,10 @@
-typer
-requests
 fastapi
-sqlmodel
-sqlalchemy
+fastkafka
+kafka-python
 psycopg2
 pydantic==1.10.9
-kafka-python
+requests
+sqlmodel
+sqlalchemy
+typer
 uvicorn
-fastkafka
